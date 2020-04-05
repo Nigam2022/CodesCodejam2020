@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+#define IO std :: ios_base :: sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define int long long
+#define double long double
+#define vi vector<int>
+#define vvi vector<vi>
+#define pii pair<int,int>
+#define vii vector<pii>
+#define nl '\n'
+#define yy "YES\n"
+#define nn "NO\n"
+#define mp map
+#define ump unordered_map
+#define ve vector
+#define pb push_back
+#define all(v) (v).begin(), (v).end()
+#define rall(v) (v).rbegin(), (v).rend()
+#define setp(x) setprecision(x)
+#define f first
+#define s second
+#define inf LONG_MAX
+#define mod 1000000007
+
+using namespace std;
+
+signed main()
+{
+        IO;
+        int t;
+        cin >> t;
+        int tt = 0;
+        while(t--)
+        {
+            int n,m;
+            cin >> n;
+            vector <unordered_set<int>> rows(n);
+            vector <unordered_set<int>> cols(n);
+            int dtot = 0;
+            for(int i = 0; i < n; i++){
+                for(int j = 0; j < n; j++){
+                    int x;
+                    cin >> x;
+                    if(i == j)  dtot += x;
+                    rows[i].insert(x);
+                    cols[j].insert(x);
+                }
+            }
+            int answer1(0),answer2(0);
+            for(auto &sets : rows)
+                answer1 += (sets.size() != n);
+            for(auto &sets : cols)
+                answer2 += (sets.size() != n);
+            cout <<"Case #"<<++tt<<": "<< dtot << ' ' << answer1 << ' ' << answer2 << nl;
+        }
+}
