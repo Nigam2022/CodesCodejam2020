@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+#define IO std :: ios_base :: sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define int long long
+#define double long double
+#define vi vector<int>
+#define vvi vector<vi>
+#define pii pair<int,int>
+#define vii vector<pii>
+#define nl '\n'
+#define yy "YES\n"
+#define nn "NO\n"
+#define mp map
+#define ump unordered_map
+#define ve vector
+#define pb push_back
+#define all(v) (v).begin(), (v).end()
+#define rall(v) (v).rbegin(), (v).rend()
+#define setp(x) setprecision(x)
+#define f first
+#define s second
+#define inf LONG_MAX
+#define mod 1000000007
+
+using namespace std;
+
+signed main()
+{
+        IO;
+        int t;
+        cin >> t;
+        int tt = 0;
+        while(t--)
+        {
+            string s;
+            cin >> s;
+            int n = s.length();
+            string result = "";
+            int open = 0;
+            for(int i = 0 ; i < n; i++){
+                int dig = s[i] - '0';
+                if(open < dig){
+                    result += string(dig - open,'(') + s[i];
+                    open = open + (dig - open);
+                }
+                else if(open > dig){
+                    result += string(open - dig,')') + s[i];
+                    open = open - (open - dig);
+                }
+                else
+                    result += s[i];
+            }
+            result += string(open,')');
+            cout <<"Case #"<<++tt<<": "<< result << nl;
+        }
+}
